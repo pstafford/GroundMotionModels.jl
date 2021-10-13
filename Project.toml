@@ -1,0 +1,13 @@
+name = "GroundMotionModels"
+uuid = "e6192878-789a-449d-927b-250062502501"
+authors = ["Peter Stafford <p.stafford@me.com>"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
