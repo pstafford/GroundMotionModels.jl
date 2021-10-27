@@ -1,6 +1,4 @@
 
-include("PJSvector.jl")
-
 import Base.+
 import Base.-
 

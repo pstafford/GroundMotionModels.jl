@@ -1,6 +1,4 @@
 
-include("PJSgroundMotions.jl")
-
 
 function PJSbindi2014(T::U, M::U, R::U, Vs30::U, Fss::Int64, Fnm::Int64, Frv::Int64,  Rtype::String="Rjb") where U<:Real
 

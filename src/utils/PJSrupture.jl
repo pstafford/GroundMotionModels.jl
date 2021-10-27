@@ -1,9 +1,9 @@
 
-include("PJSpoint.jl")
-include("PJStriangle.jl")
-include("PJSlineSegment.jl")
-include("PJSwellsCoppersmith1994.jl")
-include("PJSsite.jl")
+# include("PJSpoint.jl")
+# include("PJStriangle.jl")
+# include("PJSlineSegment.jl")
+# include("PJSwellsCoppersmith1994.jl")
+# include("PJSsite.jl")
 
 
 struct Rupture{T<:Real}
@@ -16,7 +16,6 @@ struct Rupture{T<:Real}
 end
 
 
-rup = Rupture(6.0, [Point()], 0.0, NaN, NaN, Point(NaN,NaN,NaN))
 
 function add_point!(rup::Rupture{T}, p::Point{T}) where T<:Real
     push!(rup.points, p)
@@ -32,9 +31,6 @@ function remove_point_at_index!(rup::Rupture, index::Int64)
     end
 end
 
-
-add_point!(rup, Point(1.0, 0.0))
-rup
 
 
 function ztor(rup::Rupture{T}) where T<:Real
@@ -78,7 +74,6 @@ function mechanism(rup::Rupture{T}) where T<:Real
     end
 end
 
-mechanism(rup)
 
 """
     strike(rup::Rupture{T}) where T<:Real
@@ -96,7 +91,6 @@ function strike(rup::Rupture{T}) where T<:Real
     return θ
 end
 
-# @time strike(rup)
 
 """
     dip(rup::Rupture{T}) where T<:Real
@@ -118,7 +112,6 @@ function dip(rup::Rupture{T}) where T<:Real
     return δ
 end
 
-# @time dip(rup)
 
 function hanging_wall(rup::Rupture{T}) where T<:Real
     upper_segment = LineSegment(rup.points[1], rup.points[2])
@@ -160,8 +153,6 @@ function rupture_from_hypocentre(hyp::Point{T}, θ::T, δ::T, L::T, W::T, xL::T,
     return Rupture(NaN, [pbu, pfu, pfd, pbd], NaN, L, W, hyp)
 end
 
-hyp = Point(0.0, 0.0, 10.0)
-rup = rupture_from_hypocentre(hyp, 90.0, 90.0, 10.0, 10.0, 0.5, 0.5)
 
 
 function rupture_from_hypocentre_with_source_scaling(hyp::Point{T}, θ::T, δ::T, M::T, λ::T, xL::T, xW::T, scaling_relation::String="WellsCoppersmith1994") where T<:Real
@@ -208,7 +199,6 @@ function rupture_from_hypocentre_with_source_scaling(hyp::Point{T}, θ::T, δ::T
     return Rupture(M, [pbu, pfu, pfd, pbd], λ, L, W, hyp)
 end
 
-rup = rupture_from_hypocentre_with_source_scaling(Point(0.0,0.0,5.0), 90.0, 90.0, 6.0, 0.0, 0.5, 0.5)
 
 
 function rupture_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
@@ -224,8 +214,6 @@ function rupture_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
     end
 end
 
-p = Point(10.0, 5.0, 0.0)
-@time r_rup = rupture_distance(rup, p)
 
 function rupture_distance(rup::Rupture{T}, points::Vector{Point{T}}) where T<:Real
     n = length(points)
@@ -239,7 +227,6 @@ end
 rupture_distance(rup::Rupture{T}, site::Site{T}) where T<:Real = rupture_distance(rup, site.position)
 rupture_distance(rup::Rupture{T}, sites::Vector{Site{T}}) where T<:Real = rupture_distance(rup, map(s -> s.position, sites))
 
-@time rupture_distance(rup, [Point(0.0, 5.0, 0.0), Point(0.0, 10.0, 0.0)])
 
 function joyner_boore_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
     if dip(rup) == 90.0
@@ -259,7 +246,6 @@ function joyner_boore_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
     end
 end
 
-@time joyner_boore_distance(rup, p)
 
 function joyner_boore_distance(rup::Rupture{T}, points::Vector{Point{T}}) where T<:Real
     n = length(points)
@@ -323,9 +309,8 @@ function strike_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
     end
 end
 
-@time strike_distance(rup, p)
 
-function strike_distance(rup::Rupture{T}, points::Vector{Site{T}}) where T<:Real
+function strike_distance(rup::Rupture{T}, points::Vector{Point{T}}) where T<:Real
     n = length(points)
     r_xs = zeros(T, n)
     for i in 1:n
@@ -366,7 +351,7 @@ function strike_parallel_distance(rup::Rupture{T}, p::Point{T}) where T<:Real
     end
 end
 
-function strike_parallel_distance(rup::Rupture{T}, points::Vector{Site{T}}) where T<:Real
+function strike_parallel_distance(rup::Rupture{T}, points::Vector{Point{T}}) where T<:Real
     n = length(points)
     r_ys = zeros(T, n)
     for i in 1:n

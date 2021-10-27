@@ -1,7 +1,4 @@
 
-include("PJSgroundMotions.jl")
-# using Main.PJSgroundMotions
-
 
 function PJSidriss2014( T::U, M::U, Rrup::U, Vs30::U, Frv::Int64 ) where U<:Real
     # coefficients vary above/below critical magnitude Mc

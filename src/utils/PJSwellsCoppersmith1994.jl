@@ -97,10 +97,10 @@ function rupture_width(m::T, rake::T, eps::T=0.0) where T<:Real
 	if isnan(rake) # unknown mechanism
 		sof = "ALL"
 	else
-		if (rup.rake > 30.0 && rup.rake < 150.0)
+		if (rake > 30.0 && rake < 150.0)
 			# reverse or reverse-obliquq
 			sof = "RV"
-		elseif (rup.rake < -30.0 && rup.rake > -150.0)
+		elseif (rake < -30.0 && rake > -150.0)
 			# normal or normal oblique
 			sof = "NM"
 		else
@@ -118,10 +118,10 @@ function rupture_length(m::T, rake::T, eps::T=0.0) where T<:Real
 	if isnan(rake) # unknown mechanism
 		sof = "ALL"
 	else
-		if (rup.rake > 30.0 && rup.rake < 150.0)
+		if (rake > 30.0 && rake < 150.0)
 			# reverse or reverse-obliquq
 			sof = "RV"
-		elseif (rup.rake < -30.0 && rup.rake > -150.0)
+		elseif (rake < -30.0 && rake > -150.0)
 			# normal or normal oblique
 			sof = "NM"
 		else

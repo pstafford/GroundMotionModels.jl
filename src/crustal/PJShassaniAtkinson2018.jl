@@ -2,10 +2,6 @@
 
 # log10Y = F_E + F_kappa + F_Z + F_gamma + F_S + C
 
-using Plots
-pyplot()
-
-using Interpolations
 
 function interp1(xpt, ypt, x; method="linear", extrapvalue=nothing)
 

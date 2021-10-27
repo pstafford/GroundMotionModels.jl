@@ -1,11 +1,21 @@
 
 
+"""
+    VelocityProfile{T<:Real}
+
+Custom type representing a velocity profile. Holds vectors of layer thicknesses and velocities.
+Properties are `thicknesses::Vector{T}` and `velocities::Vector{T}` where `T<:Real`.
+"""
 struct VelocityProfile{T<:Real}
     thicknesses::Vector{T}
     velocities::Vector{T}
 end
 
+"""
+    vs30(profile::VelocityProfile{T}) where T<:Real
 
+Compute time-averaged shear-wave velocity [m/s] over uppermost 30 m of a `VelocityProfile` instance.
+"""
 function vs30(profile::VelocityProfile{T}) where T<:Real
     nlayers = length(profile.thicknesses)
     if nlayers == 1
@@ -31,14 +41,6 @@ function vs30(profile::VelocityProfile{T}) where T<:Real
     end
 end
 
-zi = [ 15.0, 5.0, 5.0, 10.0 ]
-vi = [ 200.0, 400.0, 600.0, 1000.0 ]
-
-profile = VelocityProfile(zi, vi)
-
-@time vs30(profile)
-
-# 30.0 / (15.0/200.0 + 5.0/400.0 + 5.0/600.0 + 5.0/1000.0)
 
 function depth_to_velocity_horizon(profile::VelocityProfile{T}, target::T) where T<:Real
     lid = findfirst(profile.velocities .>= target)
@@ -55,19 +57,13 @@ function depth_to_velocity_horizon(profile::VelocityProfile{T}, target::T) where
     end
 end
 
-@time depth_to_velocity_horizon(profile, 1500.0)
 
 function z1p0(profile::VelocityProfile{T}) where T<:Real
     return depth_to_velocity_horizon(profile, 1000.0)
 end
 
-@time z1p0(profile)
 
 
 function z2p5(profile::VelocityProfile{T}) where T<:Real
     return depth_to_velocity_horizon(profile, 2500.0)
 end
-
-vp = VelocityProfile([5.0, 10.0, 20.0],[500.0, 700.0, 1500.0])
-z1p0(vp)
-z2p5(vp)

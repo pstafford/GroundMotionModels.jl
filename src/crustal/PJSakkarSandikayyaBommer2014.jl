@@ -1,7 +1,4 @@
 
-include("PJSgroundMotions.jl")
-# using Main.PJSgroundMotions
-
 
 function PJSasb2014pga(M::U, R::U, Fnm::Int64, Frv::Int64, Rtype::String="Rjb") where U<:Real
     # distance-type independent coefficients
@@ -166,9 +163,6 @@ function PJSasb2014(T::U, M::U, R::U, Vs30::U, Fnm::Int64, Frv::Int64, Rtype::St
 	return gm
 end
 
-@time asb = PJSasb2014(0.01, 7.0, 10.0, 350.0, 0, 0, "Rjb")
-@time asb = PJSasb2014(0.01, 7.0, 10.0, 350.0, 0, 0, "Repi")
-@time asb = PJSasb2014(0.01, 7.0, 10.0, 350.0, 0, 0, "Rhyp")
 
 function PJSasb2014( Ti::Vector{U}, M::U, R::U, Vs30::U, Fnm::Int64, Frv::Int64, Rtype::String="Rjb") where U<:Real
 	predictions = Array{PJSgroundMotion,1}()

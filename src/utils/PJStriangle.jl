@@ -1,6 +1,4 @@
 
-include("PJSpoint.jl")
-include("PJSvector.jl")
 
 struct Triangle{T<:Real}
     p1::Point{T}

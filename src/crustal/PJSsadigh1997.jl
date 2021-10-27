@@ -1,11 +1,9 @@
 
-include("PJSgroundMotions.jl")
-
 
 function PJSsadigh1997(T::U, M::U, R::U, FaultType::Int64, SiteType::Int64) where U<:Real
 
     if T > 4.0
-        return PJSgroundMotion(NaN, NaN, NaN, NaN, NaN)
+        return PJSgroundMotion()
     end
 
     # define the common period vector

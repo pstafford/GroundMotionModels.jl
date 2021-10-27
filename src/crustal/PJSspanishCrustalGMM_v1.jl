@@ -2,28 +2,6 @@
 # The model uses CY14 as its base and applies a stress drop correction and a distance
 # correction - both for geometric spreading and anelastic attenuation
 
-using Distributions
-using Roots
-
-include("PJSgroundMotions.jl")
-# GMM utilities
-include("PJSsite.jl")
-include("PJSrupture.jl")
-
-# """
-# 	PJSgroundMotion{T<:Real}
-#
-# Custom type storing the median and logarithmic mean prediction from a ground
-# motion model along with the relevant variance components
-# """
-# struct PJSgroundMotion{T<:Real}
-# 	Sa::T
-# 	lnSa::T
-# 	τ::T
-# 	ϕ::T
-# 	σ::T
-# end
-
 
 
 """

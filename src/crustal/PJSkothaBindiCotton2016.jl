@@ -1,11 +1,9 @@
 
-include("PJSgroundMotions.jl")
-
 
 function PJSkbc2016(T::U, M::U, Rjb::U, Vs30::U, region::String="Regional") where U<:Real
 
     if (region != "Regional") && (region != "Others") && (region != "Turkey") && (region != "Italy")
-        return PJSgroundMotion(NaN, NaN, NaN, NaN, NaN)
+        return PJSgroundMotion()
     end
 
     # Coefficient values

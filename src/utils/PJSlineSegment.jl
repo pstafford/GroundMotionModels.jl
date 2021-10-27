@@ -1,5 +1,4 @@
 
-using LinearAlgebra
 
 """
     LineSegment{T<:Real}

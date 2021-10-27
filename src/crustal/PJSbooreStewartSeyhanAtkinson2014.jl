@@ -1,6 +1,4 @@
 
-include("PJSgroundMotions.jl")
-# using PJSgroundMotions
 
 
 function PJSbssa2014refPGA(M::Float64, Rjb::Float64, Fss::Int64, Fnm::Int64, Frv::Int64, Fuk::Int64, anelasticRegion::String="Global")
@@ -55,7 +53,6 @@ function PJSbssa2014refPGA(M::Float64, Rjb::Float64, Fss::Int64, Fnm::Int64, Frv
     return PGAr
 end
 
-@time PJSbssa2014refPGA( 7.0, 10.0, 1, 0, 0, 0 )
 
 
 function PJSbssa2014( T::U, M::U, Rjb::U, Fss::Int64, Fnm::Int64, Frv::Int64, Fuk::Int64, Vs30::U, Z1p0::U, region::String="Global" ) where U <: Real
@@ -224,7 +221,6 @@ function PJSbssa2014( T::U, M::U, Rjb::U, Fss::Int64, Fnm::Int64, Frv::Int64, Fu
 	return gm
 end
 
-gm = PJSbssa2014( 0.2, 5.75, 15.0, 1, 0, 0, 0, 350.0, 0.5, "California" )
 
 
 
@@ -256,14 +252,3 @@ function PJSbssa2014(Ti::Vector{U}, rup::Rupture{U}, site::Site{U}) where U<:Rea
 	end
 	return predictions
 end
-
-
-# using Plots
-# pyplot()
-#
-# Ti = exp10.(range(-2,stop=1,length=101))
-#
-# preds = PJSbssa2014( Ti, 5.75, 15.0, 1, 0, 0, 0, 760.0, 0.5 )
-# Sai = get_spectrum(preds)
-#
-# plot(Ti, Sai, lab="median", xaxis=:log10, yaxis=:log10)

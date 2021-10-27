@@ -1,9 +1,4 @@
 
-include("PJSgroundMotions.jl")
-# using Main.PJSgroundMotions
-
-# using PJSgroundMotions
-
 
 function PJSask2014( T::U, M::U, Rrup::U, Rjb::U, Rx::U, Ry0::U, Ztor::U, W::U, Dip::U, Fnm::Int64, Frv::Int64, Fhw::Int64, Vs30::U, Z1p0::U, Vs30known::Int64=1, region::String="California", Fas::Int64=0, CRjb::U=NaN ) where U <: Real
 

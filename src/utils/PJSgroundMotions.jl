@@ -1,18 +1,4 @@
 
-# __precompile__()
-#
-# module PJSgroundMotions
-#
-# using Distributions
-# import Distributions.pdf, Distributions.cdf, Distributions.ccdf
-#
-# export
-#     PJSgroundMotion,
-#     get_spectrum,
-#     pdf,
-#     cdf,
-#     ccdf
-
 
 """
     PJSgroundMotion{T<:Real}
@@ -96,5 +82,3 @@ function ccdf(gm::PJSgroundMotion{T}, lnim::T) where T<:Real
     d = distribution(gm)
     return ccdf(d, lnim)
 end
-
-# end

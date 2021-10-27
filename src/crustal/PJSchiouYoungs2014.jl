@@ -1,15 +1,4 @@
 
-include("PJSgroundMotions.jl")
-include("PJSrupture.jl")
-
-# struct PJSgmpe{T<:Real}
-# 	Sa::T
-# 	lnSa::T
-# 	τ::T
-# 	ϕ::T
-# 	σ::T
-# end
-
 
 function PJScy2014( T::U, M::U, Rrup::U, Rjb::U, Rx::U, ΔZtor::U, Dip::U, Fnm::Int64, Frv::Int64, Fhw::Int64, Vs30::U, Vs30meas::Int64=1, ΔZ1p0::U=0.0, ΔDPP::U=0.0 ) where U <: Real
 	# Period-dependent coefficients
@@ -130,25 +119,6 @@ function PJScy2014( T::U, M::U, Rrup::U, Rjb::U, Rx::U, ΔZtor::U, Dip::U, Fnm::
 end
 
 
-T = 0.01
-M = 7.36
-Rrup = 117.75
-Rjb = 114.62
-Rx = 120.03
-Vs30 = 316.46
-Frv = 1
-Fnm = 0
-Fhw = 1
-EZ1p0 = exp(-7.15/4*log((Vs30^4+571.0^4 )/(1360.0^4+571.0^4)))
-Z1p0 = 260.0
-ΔZ1p0 = Z1p0 - EZ1p0
-ΔZtor = 0.0
-Dip = 75.0
-Vs30meas = 1
-
-gm = PJScy2014( T, M, Rrup, Rjb, Rx, ΔZtor, Dip, Fnm, Frv, Fhw, Vs30, Vs30meas, ΔZ1p0)
-gm.IM
-gm.σ
 
 
 function PJScy2014( Ti::Vector{U}, M::U, Rrup::U, Rjb::U, Rx::U, ΔZtor::U, Dip::U, Fnm::Int64, Frv::Int64, Fhw::Int64, Vs30::U, Vs30meas::Int64=1, ΔZ1p0::U=0.0, ΔDPP::U=0.0 ) where U <: Real

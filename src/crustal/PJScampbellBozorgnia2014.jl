@@ -1,6 +1,4 @@
 
-include("PJSgroundMotions.jl")
-
 
 function PJScb2014_pga(M::T, Rrup::T, Rjb::T, Rx::T, Ztor::T, Zhyp::T, W::T, Dip::T, Fnm::Int64, Frv::Int64, Vs30::T, Z2p5::T) where T<:Real
 	# define the coefficients for the PGA case
