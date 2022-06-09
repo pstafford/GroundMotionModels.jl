@@ -63,7 +63,7 @@ function PJScb2014_pga(M::T, Rrup::T, Rjb::T, Rx::T, Ztor::T, Zhyp::T, W::T, Dip
 
 	# style-of-faulting term
 	fflt_F = c8*Frv + c9*Fnm
-	if fflt_F == 0
+	if fflt_F != 0
 		if M <= 4.5
 			fflt_M = 0.0
 		elseif M <= 5.5
@@ -320,7 +320,7 @@ function PJScb2014( T::U, M::U, Rrup::U, Rjb::U, Rx::U, Ztor::U, Zhyp::U, W::U, 
 
 			# style-of-faulting term
 			fflt_F = c8[tid]*Frv + c9[tid]*Fnm
-			if fflt_F == 0.0
+			if fflt_F != 0.0
 				if M <= 4.5
 					fflt_M = 0.0
 				elseif M <= 5.5

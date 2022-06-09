@@ -4,8 +4,8 @@
 # module PJSgroundMotionModels
 
 # GMM utilities
-include("PJSsite.jl")
-include("PJSrupture.jl")
+include("utils/PJSsite.jl")
+include("utils/PJSrupture.jl")
 
 # Spain NPP Crustal
 include("PJSspanishCrustalGMM_v1.jl")
